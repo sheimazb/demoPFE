@@ -4,16 +4,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+interface ConsoleImage {
+  id: number;
+  src: string;
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-root',
   imports: [CommonModule],
   standalone: true,
   template: `
     <div *ngIf="!started" class="landing-page">
-      <div class="avatar-container">
-        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg" 
-             alt="Profile" 
-             class="avatar-image">
+      <div class="avatar-wrapper">
+        <div class="avatar-container">
+          <div class="avatar-frame">
+            <img src="https://st5.depositphotos.com/29094582/66194/i/450/depositphotos_661944618-stock-photo-cartoon-smiling-cute-girl-yellow.jpg" 
+                 alt="Profile" 
+                 class="avatar-image">
+          </div>
+          <div class="avatar-glow"></div>
+        </div>
       </div>
       <h1 class="welcome-text">Hi, I'm Chaima!<br>Welcome to my project advancement</h1>
       <button class="start-button" (click)="started = true">
@@ -83,9 +95,165 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
             {{ dialogTitle }}
           </h2>
           <div class="dialog-content" [innerHTML]="dialogContent"></div>
+          
+          <!-- Console Images Section -->
+          <div *ngIf="activeDialog === 'example'" class="console-images">
+            <div *ngFor="let image of consoleImages" class="console-card" (click)="expandImage(image)">
+              <img [src]="image.src" [alt]="image.title" class="console-preview">
+              <h4>{{ image.title }}</h4>
+              <p>{{ image.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expanded Image Modal -->
+      <div *ngIf="expandedImage" class="image-modal" (click)="closeExpandedImage()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <button class="close-modal" (click)="closeExpandedImage()">&times;</button>
+          <img [src]="expandedImage.src" [alt]="expandedImage.title" class="expanded-image">
+          <div class="image-info">
+            <h3>{{ expandedImage.title }}</h3>
+            <p>{{ expandedImage.description }}</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <style>
+      .avatar-wrapper {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+
+      .avatar-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .avatar-frame {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(0, 123, 255, 0.3);
+      }
+
+      .avatar-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .avatar-container:hover .avatar-image {
+        transform: scale(1.1);
+      }
+
+      .avatar-glow {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #00ff88, #00a1ff);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+      }
+
+      .avatar-container:hover .avatar-glow {
+        opacity: 0.5;
+        animation: glowPulse 2s infinite;
+      }
+
+      @keyframes glowPulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.3; }
+        100% { transform: scale(1); opacity: 0.5; }
+      }
+
+      .console-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .console-card {
+        background: #2a2a2a;
+        border-radius: 10px;
+        padding: 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .console-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .console-preview {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .image-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1100;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        background: #2d2d2d;
+        padding: 2rem;
+        border-radius: 12px;
+      }
+
+      .expanded-image {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: #ff4444;
+      }
+
+      .image-info {
+        margin-top: 1rem;
+        color: white;
+      }
+    </style>
   `
 })
 export class App {
@@ -95,6 +263,28 @@ export class App {
   dialogContent = '';
   dialogIcon = '';
   videoUrl: SafeResourceUrl;
+  expandedImage: ConsoleImage | null = null;
+
+  consoleImages: ConsoleImage[] = [
+    {
+      id: 1,
+      src: 'assets/spring-boot-logs.png',
+      title: 'Spring Boot Docker Logs',
+      description: 'JSON formatted logs from Spring Boot application in Docker'
+    },
+    {
+      id: 2,
+      src: 'assets/dotnet-logs.png',
+      title: '.NET Docker Logs',
+      description: 'JSON formatted logs from .NET application in Docker'
+    },
+    {
+      id: 3,
+      src: 'assets/fluentd-logs.png',
+      title: 'Fluentd Console',
+      description: 'Logs aggregation in Fluentd Docker container'
+    }
+  ];
 
   constructor(private sanitizer: DomSanitizer) {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/dQw4w9WgXcQ');
@@ -125,19 +315,9 @@ export class App {
         break;
       case 'example':
         this.dialogIcon = 'fas fa-code';
-        this.dialogTitle = 'Example Showcase';
+        this.dialogTitle = 'Console Outputs';
         this.dialogContent = `
-          <p>Watch this demonstration of our log management system in action:</p>
-          <div class="video-container">
-            <iframe
-              src="${this.videoUrl}"
-              title="Demo Video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <p>This example shows how different roles interact with the system to resolve issues efficiently.</p>
+          <p>Here are the console outputs from different parts of our system:</p>
         `;
         break;
       case 'coming':
@@ -159,6 +339,15 @@ export class App {
 
   closeDialog() {
     this.activeDialog = '';
+    this.expandedImage = null;
+  }
+
+  expandImage(image: ConsoleImage) {
+    this.expandedImage = image;
+  }
+
+  closeExpandedImage() {
+    this.expandedImage = null;
   }
 }
 
