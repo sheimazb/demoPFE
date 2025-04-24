@@ -42,7 +42,10 @@
             "outputPath": "dist/demoPFE",
             "polyfills": ["zone.js"],
             "scripts": [],
-            "styles": ["src/global_styles.css"],
+            "styles": [
+              "src/global_styles.css",
+              "src/assets/responsive-fixes.css"
+            ],
             "tsConfig": "tsconfig.app.json"
           }
         },

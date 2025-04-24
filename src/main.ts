@@ -405,9 +405,9 @@ interface ConsoleImage {
       .pipeline-section {
         margin: 2rem 0 3rem;
         padding: 1.5rem 0.5rem;
-        background: rgba(90, 90, 90, 0.8);
-        border-radius: 0;
-        box-shadow: none;
+        background: rgba(90, 90, 90, 0.8) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -422,11 +422,84 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .pipeline-section {
-          padding: 1rem 0.5rem;
-          margin: 0;
-          max-width: 100%;
-          overflow-x: hidden;
-          background: #5a5a5a;
+          padding: 1rem 0.5rem !important;
+          margin: 0 !important;
+          max-width: 100% !important;
+          overflow-x: hidden !important;
+          background: #5a5a5a !important;
+        }
+        
+        .pipeline-title {
+          font-size: 1.3rem !important;
+          margin-bottom: 1.2rem !important;
+          color: #4c9aff !important;
+          font-weight: bold !important;
+        }
+        
+        .pipeline-diagram {
+          flex-direction: column !important;
+          width: 90% !important;
+          gap: 0.5rem !important;
+        }
+        
+        .pipeline-stage {
+          width: 100% !important;
+          padding: 1rem !important;
+          margin-bottom: 0 !important;
+          background: #222222 !important;
+          border-radius: 8px !important;
+        }
+        
+        .pipeline-content h4 {
+          font-size: 1rem !important;
+          margin: 0.3rem 0 !important;
+        }
+        
+        .pipeline-content p {
+          font-size: 0.75rem !important;
+          line-height: 1.2 !important;
+          color: rgba(255,255,255,0.7) !important;
+        }
+        
+        .pipeline-arrow {
+          transform: rotate(90deg) !important;
+          margin: 0 !important;
+          height: 15px !important;
+          color: #4c9aff !important;
+        }
+        
+        /* Ensure iPhone-specific styles apply */
+        body .process-steps li {
+          padding-left: 2.2rem !important;
+          line-height: 1.4 !important;
+        }
+        
+        body .process-steps li::before {
+          background: rgba(76, 154, 255, 0.8) !important;
+          width: 20px !important;
+          height: 20px !important;
+        }
+      }
+
+      /* iPhone-specific adjustment with max specificity */
+      @media only screen and (min-width: 375px) and (max-width: 414px) {
+        html body .pipeline-section {
+          background: #5a5a5a !important;
+          padding: 1rem 0.5rem !important;
+        }
+        
+        html body .pipeline-diagram {
+          width: 90% !important;
+        }
+        
+        html body .pipeline-stage {
+          width: 100% !important;
+          background: #222222 !important;
+          border-radius: 8px !important;
+        }
+        
+        html body .pipeline-arrow {
+          color: #4c9aff !important;
         }
       }
 
