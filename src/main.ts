@@ -404,32 +404,36 @@ interface ConsoleImage {
       /* Pipeline Section Styles */
       .pipeline-section {
         margin: 2rem 0 3rem;
-        padding: 1.5rem;
-        background: rgba(30, 30, 30, 0.7);
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem 0.5rem;
+        background: rgba(90, 90, 90, 0.8);
+        border-radius: 0;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       @media (max-width: 768px) {
         .pipeline-section {
-          padding: 1rem;
+          padding: 1rem 0.5rem;
           margin: 1.5rem 0;
         }
       }
 
       @media (max-width: 480px) {
         .pipeline-section {
-          padding: 0.75rem;
-          margin: 1rem 0;
+          padding: 1rem 0.5rem;
+          margin: 0;
           max-width: 100%;
           overflow-x: hidden;
+          background: #5a5a5a;
         }
       }
 
       .pipeline-title {
         text-align: center;
         color: #4c9aff;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         font-size: 1.6rem;
         position: relative;
         padding-bottom: 0.8rem;
@@ -442,15 +446,17 @@ interface ConsoleImage {
         left: 50%;
         transform: translateX(-50%);
         width: 120px;
-        height: 3px;
-        background: linear-gradient(90deg, #4c9aff, #e985f7);
-        border-radius: 3px;
+        height: 2px;
+        background: #4c9aff;
+        border-radius: 0;
       }
 
       @media (max-width: 480px) {
         .pipeline-title {
           font-size: 1.3rem;
           margin-bottom: 1.2rem;
+          color: #4c9aff;
+          font-weight: bold;
         }
         
         .pipeline-title:after {
@@ -460,18 +466,21 @@ interface ConsoleImage {
 
       .pipeline-diagram {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 2.5rem;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 400px;
       }
 
       @media (max-width: 480px) {
         .pipeline-diagram {
           flex-direction: column;
           margin-bottom: 1.5rem;
-          gap: 0.2rem;
+          gap: 0.5rem;
+          width: 90%;
         }
       }
 
@@ -479,77 +488,72 @@ interface ConsoleImage {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 180px;
+        width: 100%;
         text-align: center;
-        background: linear-gradient(145deg, #2a2a2a, #333333);
-        border-radius: 10px;
+        background: #222;
+        border-radius: 8px;
         padding: 1.2rem 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s, box-shadow 0.3s;
       }
 
       .pipeline-stage:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
       }
 
       .pipeline-icon {
-        background: linear-gradient(135deg, #3a3a3a, #262626);
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        margin-bottom: 0.8rem;
       }
 
       .pipeline-icon i {
-        font-size: 1.8rem;
-        background: linear-gradient(90deg, #4c9aff, #e985f7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 1.5rem;
+        color: #4c9aff;
       }
 
       .pipeline-content h4 {
         color: #ffffff;
-        margin: 0.5rem 0;
+        margin: 0.3rem 0;
         font-size: 1.1rem;
+        font-weight: bold;
       }
 
       .pipeline-content p {
         color: #b8b8b8;
         font-size: 0.85rem;
         line-height: 1.4;
+        margin: 0.3rem 0;
       }
 
       .pipeline-arrow {
         color: #4c9aff;
         font-size: 1.5rem;
-        margin: 0 0.2rem;
+        margin: 0;
+        height: 24px;
+        display: flex;
+        align-items: center;
       }
 
       /* Responsive pipeline diagram adjustments */
       @media (max-width: 1200px) {
-        .pipeline-diagram {
-          justify-content: center;
-        }
-        
         .pipeline-stage {
-          width: 160px;
+          width: 100%;
         }
       }
 
       @media (max-width: 992px) {
         .pipeline-stage {
-          width: 150px;
-          padding: 1rem 0.8rem;
+          padding: 1rem;
         }
         
         .pipeline-icon {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
         }
         
         .pipeline-icon i {
@@ -566,27 +570,18 @@ interface ConsoleImage {
       }
       
       @media (max-width: 768px) {
-        .pipeline-diagram {
-          flex-direction: column;
-        }
-        
-        .pipeline-stage {
-          width: 100%;
-          max-width: 280px;
-          margin-bottom: 0.5rem;
-        }
-        
         .pipeline-arrow {
           transform: rotate(90deg);
-          margin: 0.5rem 0;
+          margin: 0;
         }
       }
 
       @media (max-width: 480px) {
         .pipeline-stage {
-          max-width: 90%;
-          padding: 1rem 0.5rem;
+          width: 100%;
+          padding: 1rem;
           margin-bottom: 0;
+          background: #222222;
         }
         
         .pipeline-icon {
@@ -602,25 +597,42 @@ interface ConsoleImage {
         .pipeline-content h4 {
           font-size: 1rem;
           margin: 0.3rem 0;
+          font-weight: 500;
         }
         
         .pipeline-content p {
           font-size: 0.75rem;
           margin: 0.2rem 0;
           line-height: 1.2;
+          color: rgba(255,255,255,0.7);
         }
         
         .pipeline-arrow {
           font-size: 1.2rem;
-          margin: 0.2rem 0;
+          margin: 0;
           height: 15px;
         }
       }
 
       /* iPhone-specific adjustment */
       @media (min-width: 375px) and (max-width: 414px) {
+        .pipeline-section {
+          background: #5a5a5a;
+          padding: 1rem 0.5rem;
+        }
+        
+        .pipeline-diagram {
+          width: 90%;
+        }
+        
         .pipeline-stage {
-          max-width: 95%;
+          width: 100%;
+          background: #222222;
+          border-radius: 8px;
+        }
+        
+        .pipeline-arrow {
+          color: #4c9aff;
         }
       }
       
