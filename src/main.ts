@@ -27,7 +27,7 @@ interface ConsoleImage {
           <div class="avatar-glow"></div>
         </div>
       </div>
-      <h1 class="welcome-text">Hi, I'm Chaima!<br>Welcome to my project advancement</h1>
+      <h1 class="welcome-text">Hi, I'm Chaima!<br>Welcome to my project achivements </h1>
       <button class="start-button" (click)="started = true">
         <i class="fas fa-rocket"></i>
         Start Journey
@@ -42,6 +42,95 @@ interface ConsoleImage {
       <div class="project-description">
         <h2>Log Management System</h2>
         <p>A comprehensive solution for collecting, analyzing, and resolving error logs through collaboration between different roles.</p>
+        
+        <div class="pipeline-section">
+          <h3 class="pipeline-title">System Architecture &amp; Workflow</h3>
+          
+          <div class="pipeline-diagram">
+            <div class="pipeline-stage">
+              <div class="pipeline-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="pipeline-content">
+                <h4>Application Logging</h4>
+                <p>Projects emit structured JSON logs with standardized format and project-specific tags</p>
+              </div>
+            </div>
+            <div class="pipeline-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="pipeline-stage">
+              <div class="pipeline-icon">
+                <i class="fas fa-filter"></i>
+              </div>
+              <div class="pipeline-content">
+                <h4>Fluent Bit Forwarder</h4>
+                <p>Filters logs by level and forwards errors to the Fluentd aggregator</p>
+              </div>
+            </div>
+            <div class="pipeline-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="pipeline-stage">
+              <div class="pipeline-icon">
+                <i class="fas fa-random"></i>
+              </div>
+              <div class="pipeline-content">
+                <h4>Fluentd Aggregator</h4>
+                <p>Collects, processes, and routes logs to the ticket microservice</p>
+              </div>
+            </div>
+            <div class="pipeline-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="pipeline-stage">
+              <div class="pipeline-icon">
+                <i class="fas fa-ticket-alt"></i>
+              </div>
+              <div class="pipeline-content">
+                <h4>Ticket Microservice</h4>
+                <p>Saves logs as tickets tagged by project for tracking and resolution</p>
+              </div>
+            </div>
+            <div class="pipeline-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="pipeline-stage">
+              <div class="pipeline-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="pipeline-content">
+                <h4>Gemini AI Analysis</h4>
+                <p>Analyzes stack traces and suggests recommended solutions</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="recap-details">
+            <h3>How It Works</h3>
+            <p>Our Log Management System provides an end-to-end solution for error handling across multiple projects:</p>
+            
+            <ol class="process-steps">
+              <li><strong>Project Setup:</strong> Partners configure their applications with standardized logging and project tags</li>
+              <li><strong>Log Collection:</strong> Fluent Bit agent forwards error logs based on log level filtering</li>
+              <li><strong>Log Aggregation:</strong> Fluentd centrally collects logs from all applications and services</li>
+              <li><strong>Ticket Creation:</strong> Each error automatically becomes a ticket associated with its source project</li>
+              <li><strong>AI-Powered Analysis:</strong> Gemini AI model reads the extended stack trace to provide comprehensive error analysis</li>
+              <li><strong>Solution Recommendation:</strong> Developers receive AI-suggested solutions, simplifying the debugging process</li>
+            </ol>
+            
+            <div class="key-benefits">
+              <h4><i class="fas fa-star"></i> Key Advantages</h4>
+              <ul>
+                <li>Centralized error management for all projects</li>
+                <li>Automatic error filtering and prioritization</li>
+                <li>AI-enhanced solution recommendations</li>
+                <li>Simplified debugging workflow for developers</li>
+                <li>Full traceability of errors across the system</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         
         <div class="actors-grid">
           <div class="actor-card">
@@ -178,6 +267,90 @@ interface ConsoleImage {
         100% { transform: scale(1); opacity: 0.5; }
       }
 
+      /* Benefits Section Styles */
+      .benefits-title {
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        color: #4c9aff;
+        font-size: 1.5rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .benefits-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #4c9aff, #d4a8ff);
+        border-radius: 3px;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .benefit-card {
+        background: linear-gradient(145deg, #2c2c2c, #323232);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .benefit-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #4c9aff, #d4a8ff);
+        border-radius: 4px 4px 0 0;
+      }
+
+      .benefit-icon {
+        font-size: 2rem;
+        color: #4c9aff;
+        margin-bottom: 1rem;
+      }
+
+      .benefit-card h4 {
+        color: #ffffff;
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+      }
+
+      .benefit-card p {
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .implementation-note {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: rgba(76, 154, 255, 0.1);
+        border-left: 4px solid #4c9aff;
+        border-radius: 0 4px 4px 0;
+        color: #dddddd;
+      }
+
       .console-images {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -253,6 +426,204 @@ interface ConsoleImage {
         margin-top: 1rem;
         color: white;
       }
+
+      /* Pipeline Section Styles */
+      .pipeline-section {
+        margin: 2rem 0 3rem;
+        padding: 1.5rem;
+        background: rgba(30, 30, 30, 0.7);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .pipeline-title {
+        text-align: center;
+        color: #4c9aff;
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+      }
+
+      .pipeline-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 3px;
+        background: linear-gradient(90deg, #4c9aff, #e985f7);
+        border-radius: 3px;
+      }
+
+      .pipeline-diagram {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .pipeline-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 180px;
+        text-align: center;
+        background: linear-gradient(145deg, #2a2a2a, #333333);
+        border-radius: 10px;
+        padding: 1.2rem 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .pipeline-stage:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .pipeline-icon {
+        background: linear-gradient(135deg, #3a3a3a, #262626);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .pipeline-icon i {
+        font-size: 1.8rem;
+        background: linear-gradient(90deg, #4c9aff, #e985f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .pipeline-content h4 {
+        color: #ffffff;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .pipeline-content p {
+        color: #b8b8b8;
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+
+      .pipeline-arrow {
+        color: #4c9aff;
+        font-size: 1.5rem;
+        margin: 0 0.2rem;
+      }
+
+      @media (max-width: 768px) {
+        .pipeline-diagram {
+          flex-direction: column;
+        }
+        
+        .pipeline-stage {
+          width: 100%;
+          max-width: 300px;
+        }
+        
+        .pipeline-arrow {
+          transform: rotate(90deg);
+          margin: 0.5rem 0;
+        }
+      }
+
+      .recap-details {
+        background: rgba(25, 25, 25, 0.6);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .recap-details h3 {
+        color: #4c9aff;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      .process-steps {
+        padding-left: 1.5rem;
+        counter-reset: step-counter;
+        list-style-type: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .process-steps li {
+        position: relative;
+        padding: 0.5rem 0 0.5rem 2rem;
+        margin-bottom: 0.8rem;
+        color: #e0e0e0;
+        counter-increment: step-counter;
+      }
+
+      .process-steps li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0.45rem;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #4c9aff, #e985f7);
+        border-radius: 50%;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .process-steps li strong {
+        color: #ffffff;
+      }
+
+      .key-benefits {
+        background: linear-gradient(135deg, rgba(76, 154, 255, 0.1), rgba(233, 133, 247, 0.1));
+        border-radius: 8px;
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+      }
+
+      .key-benefits h4 {
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .key-benefits h4 i {
+        color: #ffcc00;
+        margin-right: 0.5rem;
+      }
+
+      .key-benefits ul {
+        padding-left: 1.5rem;
+        margin: 0;
+      }
+
+      .key-benefits li {
+        color: #e0e0e0;
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .key-benefits li::before {
+        content: "•";
+        color: #4c9aff;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+      }
     </style>
   `
 })
@@ -268,19 +639,31 @@ export class App {
   consoleImages: ConsoleImage[] = [
     {
       id: 1,
-      src: 'assets/spring-boot-logs.png',
-      title: 'Spring Boot Docker Logs',
+      src: 'assets/infoSpring.png',
+      title: 'Spring Boot Docker Logs Level: "INFO"',
       description: 'JSON formatted logs from Spring Boot application in Docker'
     },
     {
       id: 2,
-      src: 'assets/dotnet-logs.png',
-      title: '.NET Docker Logs',
-      description: 'JSON formatted logs from .NET application in Docker'
+      src: 'assets/errorSpring.png',
+      title: 'Spring Boot Docker Logs Level: "ERROR"',
+      description: 'JSON formatted logs from Spring Boot application in Docker'
     },
     {
       id: 3,
-      src: 'assets/fluentd-logs.png',
+      src: 'assets/infoDotnet.png',
+      title: '.NET Docker Logs Level: "INFO"',
+      description: 'JSON formatted logs from .NET application in Docker'
+    },
+    {
+      id: 4,
+      src: 'assets/dotnetError.png',
+      title: '.NET Docker Logs Level: "ERROR"',
+      description: 'JSON formatted logs from .NET application in Docker'
+    },
+    {
+      id: 5,
+      src: 'assets/fluentd.png',
       title: 'Fluentd Console',
       description: 'Logs aggregation in Fluentd Docker container'
     }
@@ -300,17 +683,60 @@ export class App {
           <p>Our log format follows a structured JSON schema for better analysis and processing:</p>
           <div class="json-preview">
 {
-  "timestamp": "2025-03-15T10:30:00Z",
-  "level": "ERROR",
-  "service": "authentication",
-  "message": "Failed login attempt",
-  "metadata": {
-    "userId": "user123",
-    "ipAddress": "192.168.1.1",
-    "browser": "Chrome 120.0"
+  "instant": {
+    "epochSecond": 1745238353,
+    "nanoOfSecond": 32380016
+  },
+  "thread": "Thread-8",
+  "level": "Error",
+  "loggerName": "MyApp.Controllers.ErrorController",
+  "message": "External service error: Failed to connect to dependent service",
+  "thrown": {
+    "name": "System.Net.Http.HttpRequestException",
+    "message": "No such host is known",
+    "localizedMessage": "No such host is known",
+    "commonElementCount": 0,
+    "extendedStackTrace": "System.Net.Http.HttpRequestException: No such host is known ..."
   }
+}
 }</div>
           <p>This standardized format ensures consistent logging across all system components and facilitates automated processing.</p>
+          
+          <h3 class="benefits-title">Benefits of Structured JSON Logging</h3>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <i class="fas fa-search benefit-icon"></i>
+              <h4>Enhanced Searchability</h4>
+              <p>Structured fields make it easy to search and filter logs by specific attributes, reducing troubleshooting time.</p>
+            </div>
+            <div class="benefit-card">
+              <i class="fas fa-chart-line benefit-icon"></i>
+              <h4>Advanced Analytics</h4>
+              <p>Fields can be easily extracted for visualization, metrics, and trend analysis across systems.</p>
+            </div>
+            <div class="benefit-card">
+              <i class="fas fa-robot benefit-icon"></i>
+              <h4>Machine Processing</h4>
+              <p>Consistent JSON format enables automated log analysis, anomaly detection, and alerting.</p>
+            </div>
+            <div class="benefit-card">
+              <i class="fas fa-project-diagram benefit-icon"></i>
+              <h4>Cross-Service Correlation</h4>
+              <p>Common format makes it easy to trace issues across microservices and distributed systems.</p>
+            </div>
+            <div class="benefit-card">
+              <i class="fas fa-tools benefit-icon"></i>
+              <h4>Tool Compatibility</h4>
+              <p>Works seamlessly with Fluentd, Elasticsearch, Kibana, and other monitoring tools in the ecosystem.</p>
+            </div>
+            <div class="benefit-card">
+              <i class="fas fa-shield-alt benefit-icon"></i>
+              <h4>Security Analysis</h4>
+              <p>Structured data helps in identifying security patterns and potential threats more efficiently.</p>
+            </div>
+          </div>
+          
+          <p class="implementation-note"><strong>Implementation Note:</strong> Using this format consistently across Spring Boot, .NET, and other projects ensures unified log management and analysis capabilities.</p>
         `;
         break;
       case 'example':
