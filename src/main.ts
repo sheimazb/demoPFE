@@ -417,6 +417,15 @@ interface ConsoleImage {
         }
       }
 
+      @media (max-width: 480px) {
+        .pipeline-section {
+          padding: 0.75rem;
+          margin: 1rem 0;
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+      }
+
       .pipeline-title {
         text-align: center;
         color: #4c9aff;
@@ -440,8 +449,8 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .pipeline-title {
-          font-size: 1.4rem;
-          margin-bottom: 1.5rem;
+          font-size: 1.3rem;
+          margin-bottom: 1.2rem;
         }
         
         .pipeline-title:after {
@@ -456,6 +465,14 @@ interface ConsoleImage {
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 2.5rem;
+      }
+
+      @media (max-width: 480px) {
+        .pipeline-diagram {
+          flex-direction: column;
+          margin-bottom: 1.5rem;
+          gap: 0.2rem;
+        }
       }
 
       .pipeline-stage {
@@ -567,16 +584,43 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .pipeline-stage {
-          max-width: 240px;
+          max-width: 90%;
+          padding: 1rem 0.5rem;
+          margin-bottom: 0;
         }
         
         .pipeline-icon {
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
+          margin-bottom: 0.5rem;
         }
         
         .pipeline-icon i {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
+        }
+        
+        .pipeline-content h4 {
+          font-size: 1rem;
+          margin: 0.3rem 0;
+        }
+        
+        .pipeline-content p {
+          font-size: 0.75rem;
+          margin: 0.2rem 0;
+          line-height: 1.2;
+        }
+        
+        .pipeline-arrow {
+          font-size: 1.2rem;
+          margin: 0.2rem 0;
+          height: 15px;
+        }
+      }
+
+      /* iPhone-specific adjustment */
+      @media (min-width: 375px) and (max-width: 414px) {
+        .pipeline-stage {
+          max-width: 95%;
         }
       }
       
@@ -594,10 +638,25 @@ interface ConsoleImage {
         }
       }
 
+      @media (max-width: 480px) {
+        .recap-details {
+          padding: 1rem;
+          margin-top: 1rem;
+          border-radius: 8px;
+        }
+      }
+
       .recap-details h3 {
         color: #4c9aff;
         margin-bottom: 1rem;
         font-size: 1.4rem;
+      }
+
+      @media (max-width: 480px) {
+        .recap-details h3 {
+          font-size: 1.2rem;
+          margin-bottom: 0.8rem;
+        }
       }
 
       .process-steps {
@@ -609,7 +668,8 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .process-steps {
-          padding-left: 1rem;
+          padding-left: 0.5rem;
+          margin-bottom: 1rem;
         }
       }
 
@@ -623,7 +683,9 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .process-steps li {
-          padding: 0.5rem 0 0.5rem 1.8rem;
+          padding: 0.5rem 0 0.5rem 2rem;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
         }
       }
 
@@ -646,10 +708,24 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .process-steps li::before {
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
           font-size: 0.7rem;
           top: 0.5rem;
+          left: 0.2rem;
+        }
+      }
+
+      /* iPhone-specific adjustments for numbered steps */
+      @media (min-width: 375px) and (max-width: 414px) {
+        .process-steps li {
+          padding-left: 2.2rem;
+          line-height: 1.4;
+        }
+        .process-steps li::before {
+          background: rgba(76, 154, 255, 0.8);
+          width: 20px;
+          height: 20px;
         }
       }
 
@@ -666,7 +742,8 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .key-benefits {
-          padding: 1rem;
+          padding: 0.8rem;
+          margin-top: 1rem;
         }
       }
 
@@ -676,6 +753,13 @@ interface ConsoleImage {
         font-size: 1.1rem;
         display: flex;
         align-items: center;
+      }
+
+      @media (max-width: 480px) {
+        .key-benefits h4 {
+          font-size: 1rem;
+          margin-bottom: 0.8rem;
+        }
       }
 
       .key-benefits h4 i {
@@ -690,7 +774,12 @@ interface ConsoleImage {
 
       @media (max-width: 480px) {
         .key-benefits ul {
-          padding-left: 1.2rem;
+          padding-left: 1rem;
+        }
+        
+        .key-benefits li {
+          font-size: 0.85rem;
+          margin-bottom: 0.4rem;
         }
       }
 
@@ -706,6 +795,12 @@ interface ConsoleImage {
         font-weight: bold;
         position: absolute;
         left: -1rem;
+      }
+
+      @media (max-width: 480px) {
+        .key-benefits li::before {
+          left: -0.8rem;
+        }
       }
 
       /* Actor grid responsive styles */
