@@ -210,11 +210,37 @@ interface ConsoleImage {
     </div>
 
     <style>
+      /* Global responsive adjustments */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8rem !important;
+        }
+        h2 {
+          font-size: 1.5rem !important;
+        }
+        h3 {
+          font-size: 1.3rem !important;
+        }
+        .dialog {
+          width: 95% !important;
+          max-height: 85vh !important;
+          padding: 1rem !important;
+        }
+      }
+
+      /* Avatar section responsive styles */
       .avatar-wrapper {
         position: relative;
         width: 200px;
         height: 200px;
         margin: 0 auto;
+      }
+
+      @media (max-width: 480px) {
+        .avatar-wrapper {
+          width: 150px;
+          height: 150px;
+        }
       }
 
       .avatar-container {
@@ -267,6 +293,24 @@ interface ConsoleImage {
         100% { transform: scale(1); opacity: 0.5; }
       }
 
+      /* Main interface responsive styles */
+      .project-description {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .button-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .feature-button {
+          width: 100%;
+        }
+      }
+
       /* Benefits Section Styles */
       .benefits-title {
         margin-top: 2rem;
@@ -295,6 +339,12 @@ interface ConsoleImage {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1.5rem;
         margin-top: 1.5rem;
+      }
+
+      @media (max-width: 600px) {
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       .benefit-card {
@@ -351,82 +401,6 @@ interface ConsoleImage {
         color: #dddddd;
       }
 
-      .console-images {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .console-card {
-        background: #2a2a2a;
-        border-radius: 10px;
-        padding: 1rem;
-        cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .console-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .console-preview {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-
-      .image-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1100;
-      }
-
-      .modal-content {
-        position: relative;
-        max-width: 90%;
-        max-height: 90vh;
-        background: #2d2d2d;
-        padding: 2rem;
-        border-radius: 12px;
-      }
-
-      .expanded-image {
-        max-width: 100%;
-        max-height: 70vh;
-        object-fit: contain;
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
-
-      .close-modal:hover {
-        color: #ff4444;
-      }
-
-      .image-info {
-        margin-top: 1rem;
-        color: white;
-      }
-
       /* Pipeline Section Styles */
       .pipeline-section {
         margin: 2rem 0 3rem;
@@ -434,6 +408,13 @@ interface ConsoleImage {
         background: rgba(30, 30, 30, 0.7);
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .pipeline-section {
+          padding: 1rem;
+          margin: 1.5rem 0;
+        }
       }
 
       .pipeline-title {
@@ -455,6 +436,17 @@ interface ConsoleImage {
         height: 3px;
         background: linear-gradient(90deg, #4c9aff, #e985f7);
         border-radius: 3px;
+      }
+
+      @media (max-width: 480px) {
+        .pipeline-title {
+          font-size: 1.4rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .pipeline-title:after {
+          width: 80px;
+        }
       }
 
       .pipeline-diagram {
@@ -521,6 +513,41 @@ interface ConsoleImage {
         margin: 0 0.2rem;
       }
 
+      /* Responsive pipeline diagram adjustments */
+      @media (max-width: 1200px) {
+        .pipeline-diagram {
+          justify-content: center;
+        }
+        
+        .pipeline-stage {
+          width: 160px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .pipeline-stage {
+          width: 150px;
+          padding: 1rem 0.8rem;
+        }
+        
+        .pipeline-icon {
+          width: 50px;
+          height: 50px;
+        }
+        
+        .pipeline-icon i {
+          font-size: 1.5rem;
+        }
+        
+        .pipeline-content h4 {
+          font-size: 1rem;
+        }
+        
+        .pipeline-content p {
+          font-size: 0.8rem;
+        }
+      }
+      
       @media (max-width: 768px) {
         .pipeline-diagram {
           flex-direction: column;
@@ -528,7 +555,8 @@ interface ConsoleImage {
         
         .pipeline-stage {
           width: 100%;
-          max-width: 300px;
+          max-width: 280px;
+          margin-bottom: 0.5rem;
         }
         
         .pipeline-arrow {
@@ -537,11 +565,33 @@ interface ConsoleImage {
         }
       }
 
+      @media (max-width: 480px) {
+        .pipeline-stage {
+          max-width: 240px;
+        }
+        
+        .pipeline-icon {
+          width: 45px;
+          height: 45px;
+        }
+        
+        .pipeline-icon i {
+          font-size: 1.3rem;
+        }
+      }
+      
       .recap-details {
         background: rgba(25, 25, 25, 0.6);
         border-radius: 10px;
         padding: 1.5rem;
         margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .recap-details {
+          padding: 1.2rem;
+          margin-top: 1.5rem;
+        }
       }
 
       .recap-details h3 {
@@ -557,12 +607,24 @@ interface ConsoleImage {
         margin-bottom: 1.5rem;
       }
 
+      @media (max-width: 480px) {
+        .process-steps {
+          padding-left: 1rem;
+        }
+      }
+
       .process-steps li {
         position: relative;
         padding: 0.5rem 0 0.5rem 2rem;
         margin-bottom: 0.8rem;
         color: #e0e0e0;
         counter-increment: step-counter;
+      }
+
+      @media (max-width: 480px) {
+        .process-steps li {
+          padding: 0.5rem 0 0.5rem 1.8rem;
+        }
       }
 
       .process-steps li::before {
@@ -582,6 +644,15 @@ interface ConsoleImage {
         align-items: center;
       }
 
+      @media (max-width: 480px) {
+        .process-steps li::before {
+          width: 20px;
+          height: 20px;
+          font-size: 0.7rem;
+          top: 0.5rem;
+        }
+      }
+
       .process-steps li strong {
         color: #ffffff;
       }
@@ -591,6 +662,12 @@ interface ConsoleImage {
         border-radius: 8px;
         padding: 1.2rem;
         margin-top: 1.5rem;
+      }
+
+      @media (max-width: 480px) {
+        .key-benefits {
+          padding: 1rem;
+        }
       }
 
       .key-benefits h4 {
@@ -611,6 +688,12 @@ interface ConsoleImage {
         margin: 0;
       }
 
+      @media (max-width: 480px) {
+        .key-benefits ul {
+          padding-left: 1.2rem;
+        }
+      }
+
       .key-benefits li {
         color: #e0e0e0;
         margin-bottom: 0.5rem;
@@ -623,6 +706,302 @@ interface ConsoleImage {
         font-weight: bold;
         position: absolute;
         left: -1rem;
+      }
+
+      /* Actor grid responsive styles */
+      .actors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 992px) {
+        .actors-grid {
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        .actors-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+        }
+      }
+
+      /* Console images responsive styles */
+      .console-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .console-images {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .console-images {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .console-card {
+        background: #2a2a2a;
+        border-radius: 10px;
+        padding: 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .console-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .console-preview {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      @media (max-width: 480px) {
+        .console-preview {
+          height: 180px;
+        }
+      }
+
+      /* Modal responsive styles */
+      .image-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1100;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        background: #2d2d2d;
+        padding: 2rem;
+        border-radius: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          padding: 1.5rem;
+          max-width: 95%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .modal-content {
+          padding: 1rem;
+          max-width: 95%;
+        }
+      }
+
+      .expanded-image {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: #ff4444;
+      }
+
+      .image-info {
+        margin-top: 1rem;
+        color: white;
+      }
+
+      /* Landing page responsive styles */
+      .landing-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      @media (max-width: 480px) {
+        .landing-page {
+          padding: 1.5rem;
+        }
+      }
+
+      .welcome-text {
+        margin: 2rem 0;
+        font-size: 2.5rem;
+        color: #ffffff;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 768px) {
+        .welcome-text {
+          font-size: 2rem;
+          margin: 1.5rem 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .welcome-text {
+          font-size: 1.8rem;
+          margin: 1.2rem 0;
+        }
+      }
+
+      .start-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        background: linear-gradient(45deg, #4c9aff, #e985f7);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .start-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 480px) {
+        .start-button {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+      }
+
+      /* Dialog overlay responsive styles */
+      .dialog-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+      }
+
+      .dialog {
+        background: #212121;
+        border-radius: 12px;
+        padding: 2rem;
+        width: 80%;
+        max-width: 900px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      @media (max-width: 992px) {
+        .dialog {
+          width: 90%;
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .dialog {
+          width: 95%;
+          padding: 1.2rem;
+          max-height: 85vh;
+        }
+      }
+
+      .dialog-title {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      @media (max-width: 480px) {
+        .dialog-title {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .close-button:hover {
+        color: #ff4444;
+      }
+
+      /* JSON preview responsive styles */
+      .json-preview {
+        background: #1a1a1a;
+        border-radius: 8px;
+        padding: 1rem;
+        font-family: monospace;
+        color: #e0e0e0;
+        overflow-x: auto;
+        white-space: pre;
+        margin: 1rem 0;
+      }
+
+      @media (max-width: 768px) {
+        .json-preview {
+          font-size: 0.9rem;
+          padding: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .json-preview {
+          font-size: 0.8rem;
+          padding: 0.7rem;
+        }
       }
     </style>
   `
